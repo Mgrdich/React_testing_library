@@ -17,9 +17,15 @@ describe('TodoFooter', () => {
         );
     }
 
-    it("it should render the correct amount of tasks", () => {
+    it("it should render show that element exist", () => {
         setUpRenderTodoFooter(5);
-        let element = screen.getByTitle(/5 tasks left/im);
+        let element = screen.getByTestId("task_number_indicator");
+        expect(element).toBeInTheDocument();
+    });
+
+    it("it should view correct number of tasks", () => {
+        setUpRenderTodoFooter(5);
+        let element = screen.getByText(/5 tasks left/i);
         expect(element).toBeInTheDocument();
     });
 });
