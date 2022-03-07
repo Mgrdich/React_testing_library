@@ -3,6 +3,7 @@ import Header from "../Header";
 
 
 describe('Header', () => {
+    // mostly repetition for learning purposes
     beforeEach(() => render(<Header title="Todo"/>));
 
     test('should render the same text', () => {
