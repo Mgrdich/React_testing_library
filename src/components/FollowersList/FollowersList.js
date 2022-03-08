@@ -8,7 +8,7 @@ export default function FollowersList() {
     const [followers, setFollowers] = useState([]);
 
     useEffect(() => {
-        fetchFollowers()
+        fetchFollowers().then();
     }, []);
 
     const fetchFollowers = async () => {
@@ -19,8 +19,10 @@ export default function FollowersList() {
     return (
         <div className="followerslist-container">
             <div>
-                {followers.map(follower => (
-                    <div className="follower-item">
+                {followers.map((follower , index) => (
+                    <div className="follower-item"
+                         data-testid={`follower-item-${index}`}
+                    >
                         <img src={follower.picture.large} alt="an image"/>
                         <div className="followers-details">
                             <div className="follower-item-name">
