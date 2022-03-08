@@ -60,4 +60,26 @@ describe('Todo', () => {
         let elements = screen.getAllByTestId('todo_task');
         expect(elements.length).toBe(2);
     });
+
+    it('should view the right number of content during initial render', () => {
+        addTask(['Buy Stuff', 'Sell Stuff']);
+
+        let elements = screen.getAllByTestId('todo_task');
+        expect(elements.length).toBe(2);
+    });
+
+    it('should view the styling changes after click on a Todo', () => {
+        addTask('Buy Stuff');
+
+        let elements = screen.getByTestId('todo_task');
+        expect(elements).not.toHaveClass('todo-item-active')
+    });
+
+    it('should not have view the styling changes after click on a Todo', () => {
+        addTask('Buy Stuff');
+
+        let element = screen.getByTestId('todo_task');
+        fireEvent.click(element);
+        expect(element).toHaveClass('todo-item-active')
+    });
 });
