@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import "./AddInput.css"
-import { v4 } from "uuid"
+import React, { useState } from 'react';
+import "./AddInput.css";
+import { v4 } from "uuid";
 
 function AddInput({
     setTodos, todos
 }) {
 
-    const [todo, setTodo] = useState("")
+    const [todo, setTodo] = useState("");
 
     const addTodo = () => {
         let updatedTodos = [
@@ -18,8 +18,8 @@ function AddInput({
             }
         ]
         setTodos(updatedTodos);
-        setTodo("")
-    }
+        setTodo("");
+    };
 
     return (
         <div className="input-container">
@@ -28,6 +28,7 @@ function AddInput({
                 value={todo} 
                 onChange={(e) => setTodo(e.target.value)}
                 placeholder="Add a new task here..."
+                data-testid="todo_input"
             />
             <button 
                 className="add-btn"
@@ -36,7 +37,7 @@ function AddInput({
                 Add
             </button>
         </div>
-    )
+    );
 }
 
 export default AddInput
