@@ -25,7 +25,7 @@ describe('Todo', () => {
 
         tasks.forEach(function (item) {
             fireEvent.change(inputElement , {
-                target : { value:`${value}${i}` }
+                target: {value: item}
             });
             fireEvent.click(buttonElement);
         });
@@ -47,10 +47,7 @@ describe('Todo', () => {
 
     it('should add the element to Todo after click the element', () => {
         let value = 'Buy some stuff';
-        fireEvent.change(inputElement , {
-           target : { value }
-        });
-        fireEvent.click(buttonElement);
+        addTask(value);
 
         let taskInTodoElement = screen.getByText(value);
 
@@ -58,18 +55,9 @@ describe('Todo', () => {
     });
 
     it('should add multiple elements to the Todo after click the element', () => {
-        let value = 'Buy some stuff';
-        for (let i = 0; i < 3; i++) {
-            fireEvent.change(inputElement , {
-                target : { value:`${value}${i}` }
-            });
-            fireEvent.click(buttonElement);
-        }
+        addTask(['Buy Stuff', 'Sell Stuff']);
 
-        let regex = new RegExp(value , 'i');
-        // let elements = getAllByText(regex);
-        //
-        //
-        // expect(elements).toBeInTheDocument();
+        let elements = screen.getAllByTestId('todo_task');
+        expect(elements.length).toBe(2);
     });
 });
