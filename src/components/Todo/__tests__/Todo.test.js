@@ -1,4 +1,4 @@
-import {render, screen, fireEvent, getAllByText} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import Todo from "../Todo";
 import {BrowserRouter} from "react-router-dom";
 
