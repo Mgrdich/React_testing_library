@@ -1,4 +1,4 @@
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, getAllByText} from '@testing-library/react';
 import Todo from "../Todo";
 import {BrowserRouter} from "react-router-dom";
 
@@ -9,6 +9,26 @@ describe('Todo', () => {
                 <Todo/>
             </BrowserRouter>
         );
+    }
+
+    /**
+     * @param {String | String[]} task
+     * */
+    function addTask(task) {
+        let tasks = [];
+
+        if (typeof task === 'string') {
+            tasks.push(task);
+        } else if(Array.isArray(task)) {
+            tasks = task;
+        }
+
+        tasks.forEach(function (item) {
+            fireEvent.change(inputElement , {
+                target : { value:`${value}${i}` }
+            });
+            fireEvent.click(buttonElement);
+        });
     }
 
     let inputElement
@@ -37,17 +57,19 @@ describe('Todo', () => {
         expect(taskInTodoElement).toBeInTheDocument();
     });
 
-    // it('should add multiple elements to the Todo after click the element', () => {
-    //     let value = 'Buy some stuff';
-    //     for (let i = 0; i < 3; i++) {
-    //         fireEvent.change(inputElement , {
-    //             target : { value:`${value}${i}` }
-    //         });
-    //         fireEvent.click(buttonElement);
-    //     }
-    //
-    //
-    //
-    //     expect(taskInTodoElement).toBeInTheDocument();
-    // });
+    it('should add multiple elements to the Todo after click the element', () => {
+        let value = 'Buy some stuff';
+        for (let i = 0; i < 3; i++) {
+            fireEvent.change(inputElement , {
+                target : { value:`${value}${i}` }
+            });
+            fireEvent.click(buttonElement);
+        }
+
+        let regex = new RegExp(value , 'i');
+        // let elements = getAllByText(regex);
+        //
+        //
+        // expect(elements).toBeInTheDocument();
+    });
 });
