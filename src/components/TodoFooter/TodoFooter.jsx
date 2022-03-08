@@ -1,5 +1,4 @@
-import React from 'react'
-import "./TodoFooter.css"
+import "./TodoFooter.css";
 import { Link } from "react-router-dom"
 
 function TodoFooter({

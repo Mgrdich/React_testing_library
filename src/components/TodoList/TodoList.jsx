@@ -1,6 +1,5 @@
-import React from 'react'
-import TodoFooter from '../TodoFooter/TodoFooter'
-import "./TodoList.css"
+import TodoFooter from '../TodoFooter/TodoFooter';
+import "./TodoList.css";
 
 function TodoList({
     todos, setTodos
