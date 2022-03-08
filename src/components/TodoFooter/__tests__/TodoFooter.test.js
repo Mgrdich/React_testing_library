@@ -28,4 +28,10 @@ describe('TodoFooter', () => {
         let element = screen.getByText(/5 tasks left/i);
         expect(element).toBeInTheDocument();
     });
+
+    it("it should view correct number of task", () => {
+        setUpRenderTodoFooter(1);
+        let element = screen.getByText(/1 task left/i);
+        expect(element).toBeInTheDocument();
+    });
 });
