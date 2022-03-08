@@ -27,7 +27,7 @@ describe('Add Input', () => {
         expect(inputElement.value).toBe(value);
     });
 
-    it('should render input Element and change should be triggered', () => {
+    it('should render input Element and change and emptied by the button', () => {
         let value = 'Buy clothes';
         fireEvent.change(inputElement, {
             target : {
