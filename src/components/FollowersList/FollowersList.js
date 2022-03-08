@@ -12,7 +12,7 @@ export default function FollowersList() {
     }, []);
 
     const fetchFollowers = async () => {
-        const {data} = await axios.get("https://randomuser.me/api/?results=5")
+        const {data} = await axios.get("https://randomuser.me/api/?results=5");
         setFollowers(data.results)
     }
 
@@ -22,6 +22,7 @@ export default function FollowersList() {
                 {followers.map((follower , index) => (
                     <div className="follower-item"
                          data-testid={`follower-item-${index}`}
+                         key={follower.phone}
                     >
                         <img src={follower.picture.large} alt="an image"/>
                         <div className="followers-details">
