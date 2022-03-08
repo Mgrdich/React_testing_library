@@ -68,18 +68,29 @@ describe('Todo', () => {
         expect(elements.length).toBe(2);
     });
 
-    it('should view the styling changes after click on a Todo', () => {
+    it('should not view the styling changes after click on a Todo', () => {
         addTask('Buy Stuff');
 
         let elements = screen.getByTestId('todo_task');
         expect(elements).not.toHaveClass('todo-item-active')
     });
 
-    it('should not have view the styling changes after click on a Todo', () => {
+    it('should have view the styling changes after click on a Todo', () => {
         addTask('Buy Stuff');
 
         let element = screen.getByTestId('todo_task');
         fireEvent.click(element);
-        expect(element).toHaveClass('todo-item-active')
+        expect(element).toHaveClass('todo-item-active');
+    });
+
+    it('should toggle between classes when ckic', () => {
+        addTask('Buy Stuff');
+
+        let element = screen.getByTestId('todo_task');
+        fireEvent.click(element);
+        expect(element).toHaveClass('todo-item-active');
+
+        fireEvent.click(element);
+        expect(element).not.toHaveClass('todo-item-active');
     });
 });
